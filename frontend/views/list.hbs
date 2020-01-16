@@ -1,0 +1,33 @@
+{{>menu }}
+
+<h3 class="display-4 text-center">{{this.title}}</h3><br>
+<div class="row">
+    <div class="col-md-12 mt-3 jumbotron">
+        <table class="table table-bordered table-hover text-center">
+            <thead>
+                    <th>id</th>
+                    <th>Title</th>
+                    <th>Release</th>
+                    <th>Director</th>
+                    <th>Cast</th>
+                    <th>Origin</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+            </thead>
+            <tbody>
+                {{#each data}}
+                <tr>
+                    <td class="text-success">{{this.iddata_movies}}</td>
+                    <td>{{this.Title}}</td>
+                    <td>{{this.Release}}</td>
+                    <td>{{this.Director}}</td>
+                    <td>{{this.Cast}}</td>
+                    <td>{{this.Origin}}</td>
+                    <td><a href="/edit/{{this.iddata_movies}}" class="text-primary"><span><i class="far fa-edit"></i></span></a></td>
+                    <td><a href="/delete/{{this.iddata_movies}}" class="text-danger"><span><i class="far fa-trash-alt"></i></span></a></td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>

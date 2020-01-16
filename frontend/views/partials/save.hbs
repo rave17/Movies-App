@@ -1,0 +1,29 @@
+{{>menu}}
+<div class="row">
+<div class="col-md-6 m-2 text-center mx-auto">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="display-4">Insert New Movie</h3>
+            <form action="/add" method="POST">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="title" placeholder="Title">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="date" name="release" placeholder="Release Date">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="origin" placeholder="Origin">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="director" placeholder="Director">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="cast" placeholder="Cast">
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <a href="/"><button class="btn btn-success btn-block mt-4">Back to home <span><i class="fas fa-home"></i></span></button></a>
+</div>
+</div>
