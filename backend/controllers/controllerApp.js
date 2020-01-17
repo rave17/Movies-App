@@ -25,6 +25,7 @@ controllerApp.save = (req, res) => {
   const data = req.body
   req.getConnection((err, conn) => {
     conn.query('INSERT INTO data_movies set ?', [data], (err, data_movies) => {
+      console.lo  
       console.log('texto ejemplo ')
       res.redirect('/')
     })
