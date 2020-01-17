@@ -5,6 +5,7 @@ const path = require('path')
 const mysql = require('mysql')
 const myConnection = require('express-myconnection')
 const exhbs = require('express-handlebars')
+const moment = require('moment')
 
 
 const routes = require('./routes/index')
@@ -19,8 +20,11 @@ const hbs = exhbs.create({
     defaultLayout: 'main',
     layoutsDir: path.join(__dirname, '../frontend/views/layouts'),
     partialsDir: path.join(__dirname, '../frontend/views/partials'),
-    extname: '.hbs'
+    extname: '.hbs',
+    helpers: moment
 })
+
+
 
 app.engine('.hbs', hbs.engine);
 
