@@ -1,10 +1,10 @@
+const queryConsults = require('../../database/querys/queryConsults')
 const controllerApp = {}
 
 //list movies
 controllerApp.list = (req, res) => {
   req.getConnection((err, conn) => {
-    let queryConsult = 'SELECT * FROM data_movies'
-    conn.query(queryConsult, function (err, data_movies) {
+    conn.query(queryConsults.list, function (err, data_movies) {
       if (err) throw err
       console.log(data_movies)
       res.render('list', {
@@ -24,8 +24,7 @@ controllerApp.add = (req, res) => {
 controllerApp.save = (req, res) => {
   const data = req.body
   req.getConnection((err, conn) => {
-    conn.query('INSERT INTO data_movies set ?', [data], (err, data_movies) => {
-      console.lo  
+    conn.query(queryConsults.insert, [data], (err, data_movies) => {
       console.log('texto ejemplo ')
       res.redirect('/')
     })
@@ -36,7 +35,7 @@ controllerApp.save = (req, res) => {
 controllerApp.edit = (req, res) => {
   const { id } = req.params
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM data_movies WHERE iddata_movies = ?", [id], (err, rows) => {
+    conn.query(queryConsults.edit, [id], (err, rows) => {
       res.render('update', {
         title: 'Edit movie',
         data: rows[0]
@@ -49,7 +48,7 @@ controllerApp.update = (req, res) => {
   const { id } = req.params
   const newMovie = req.body
   req.getConnection((err, conn) => {
-    conn.query("UPDATE data_movies set ? WHERE iddata_movies = ?", [newMovie, id], (err, rows) => {
+    conn.query(queryConsults.update, [newMovie, id], (err, rows) => {
       console.log(newMovie)
       res.redirect('/')
     })
@@ -59,7 +58,7 @@ controllerApp.update = (req, res) => {
 controllerApp.remove = (req, res) => {
   const { id } = req.params
   req.getConnection((err, conn) => {
-    conn.query('DELETE FROM data_movies WHERE iddata_movies = ?', [id], (err, rows) => {
+    conn.query(queryConsults.delete, [id], (err, rows) => {
       if (err) throw err
       res.redirect('/')
     })
