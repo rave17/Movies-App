@@ -10,6 +10,13 @@ const queryConsults = {}
 
     queryConsults.delete = 'DELETE FROM data_movies WHERE iddata_movies = ?'
 
+    queryConsults.findGet = "SELECT * FROM data_movies WHERE `Title` = ? %`(${searchBar})`%"
+
+    queryConsults.findPost = "SELECT * FROM data_movies WHERE `Title`"
+
+    
+
+
 
     
 module.exports = queryConsults
