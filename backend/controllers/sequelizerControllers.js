@@ -1,5 +1,5 @@
 const db = require("../../database/movieModel");
-const Movie = db.tutorials;
+const Movie = db.movies;
 const Op = db.Sequelize.Op;
 
 // Create and Save a new Tutorial
@@ -103,7 +103,7 @@ exports.delete = (req, res) => {
         });
       } else {
         res.send({
-          message: `Cannot delete Tutorial with id=${id}. Maybe Tutorial was not found!`
+          message: `Cannot delete Tutorial with id=${id}. Maybe movies was not found!`
         });
       }
     })
@@ -114,24 +114,24 @@ exports.delete = (req, res) => {
     });
 };
 
-// Delete all Tutorials from the database.
+// Delete all movies from the database.
 exports.deleteAll = (req, res) => {
-    Tutorial.destroy({
+    Movies.destroy({
         where: {},
         truncate: false
       })
         .then(nums => {
-          res.send({ message: `${nums} Tutorials were deleted successfully!` });
+          res.send({ message: `${nums} Movies were deleted successfully!` });
         })
         .catch(err => {
           res.status(500).send({
             message:
-              err.message || "Some error occurred while removing all tutorials."
+              err.message || "Some error occurred while removing all movies."
           });
         });
 };
 
-// Find all published Tutorials
+// Find all published movies
 exports.findAllPublished = (req, res) => {
     Tutorial.findAll({ where: { published: true } })
     .then(data => {
@@ -140,7 +140,7 @@ exports.findAllPublished = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Some error occurred while retrieving tutorials."
+          err.message || "Some error occurred while retrieving movies."
       });
     });
 };
