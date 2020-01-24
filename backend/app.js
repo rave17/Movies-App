@@ -6,10 +6,14 @@ const mysql = require('mysql')
 const myConnection = require('express-myconnection')
 const exhbs = require('express-handlebars')
 const moment = require('moment')
-
+const dbSequelize = require('sequelize')
 
 const routes = require('./routes/index')
 const app = express()
+
+const dbModel = require('../database/movieModel.js')
+
+dbModel.sequelize.sync()
 
 app.set('port', process.env.PORT || 3000)
 app.set(bodyParser.json())
