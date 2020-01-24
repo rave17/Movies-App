@@ -69,7 +69,7 @@ controllerApp.remove = (req, res) => {
 controllerApp.findGet = (req, res) => {
   const { searchBar } = req.query.searching
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM data_movies WHERE `Title`  = ?", [searchBar], function (err, rows) {
+    conn.query(queryConsults.findGet, [searchBar], function (err, rows) {
       res.render('find', {
         title: 'Find movie',
         result: 'una pelicula',
@@ -83,12 +83,10 @@ controllerApp.findPost = (req, res) => {
   const searchBar = req.query.searching
   const movieSearch = req.body
   req.getConnection((err, conn) => {
-    conn.query("SELECT * FROM data_movies WHERE `Title` LIKE = ?", [searchBar], (err, rows) => {
+    conn.query(queryConsults.findPost, [searchBar], (err, rows) => {
       if (err) throw err
-
       console.log(movieSearch)
       res.redirect('find')
-
     })
   })
 }
